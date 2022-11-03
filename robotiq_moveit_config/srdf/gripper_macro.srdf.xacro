@@ -18,7 +18,15 @@
     </group_state>
     
     <group_state name="${prefix}close" group="${prefix}gripper">
-      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.8" />
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.78" />
+    </group_state>
+
+    <group_state name="${prefix}almost_close" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.7" />
+    </group_state>
+
+    <group_state name="${prefix}half_open" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.4" />
     </group_state>
     
 
