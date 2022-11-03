@@ -1,6 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="robotiq_gripper">
     <xacro:macro name="robotiq_gripper" params="parent *origin sim:=false prefix">
+
+
+
+        <!-- ros2 control include -->
+        <xacro:include filename="$(find robotiq_description)/urdf/robotiq_gripper.ros2_control.xacro" />
+        <!-- ros2 control instance -->
+        <xacro:robotiq_gripper_ros2_control
+          name="robotiq_gripper_control"
+          com_port="/dev/ttyUSB0"/>
+
+
+
         <link name="${prefix}robotiq_85_base_link">
             <visual>
                 <geometry>

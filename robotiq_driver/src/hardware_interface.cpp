@@ -37,6 +37,8 @@
 #include "hardware_interface/actuator_interface.hpp"
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
+#include "rclcpp_lifecycle/state.hpp"
 
 constexpr uint8_t kGripperMinPos = 3;
 constexpr uint8_t kGripperMaxPos = 230;
@@ -44,14 +46,15 @@ constexpr uint8_t kGripperRange = kGripperMaxPos - kGripperMinPos;
 
 const auto kLogger = rclcpp::get_logger("RobotiqGripperHardwareInterface");
 
+using CallbackReturn = rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
+
 namespace robotiq_driver
 {
 RobotiqGripperHardwareInterface::RobotiqGripperHardwareInterface()
 {
 }
 
-hardware_interface::CallbackReturn
-RobotiqGripperHardwareInterface::on_init(const hardware_interface::HardwareInfo& info)
+CallbackReturn RobotiqGripperHardwareInterface::on_init(const hardware_interface::HardwareInfo& info)
 {
   if (hardware_interface::ActuatorInterface::on_init(info) != CallbackReturn::SUCCESS)
   {
@@ -145,8 +148,7 @@ std::vector<hardware_interface::CommandInterface> RobotiqGripperHardwareInterfac
   return command_interfaces;
 }
 
-hardware_interface::CallbackReturn
-RobotiqGripperHardwareInterface::on_activate(const rclcpp_lifecycle::State& /*previous_state*/)
+CallbackReturn RobotiqGripperHardwareInterface::on_activate(const rclcpp_lifecycle::State& /*previous_state*/)
 {
   // set some default values for joints
   if (std::isnan(gripper_position_))
@@ -201,8 +203,7 @@ RobotiqGripperHardwareInterface::on_activate(const rclcpp_lifecycle::State& /*pr
   return CallbackReturn::SUCCESS;
 }
 
-hardware_interface::CallbackReturn
-RobotiqGripperHardwareInterface::on_deactivate(const rclcpp_lifecycle::State& /*previous_state*/)
+CallbackReturn RobotiqGripperHardwareInterface::on_deactivate(const rclcpp_lifecycle::State& /*previous_state*/)
 {
   command_interface_is_running_ = false;
   command_interface_.join();
@@ -213,8 +214,7 @@ RobotiqGripperHardwareInterface::on_deactivate(const rclcpp_lifecycle::State& /*
   return CallbackReturn::SUCCESS;
 }
 
-hardware_interface::return_type RobotiqGripperHardwareInterface::read(const rclcpp::Time& /*time*/,
-                                                                      const rclcpp::Duration& /*period*/)
+hardware_interface::return_type RobotiqGripperHardwareInterface::read()
 {
   gripper_position_ = gripper_closed_pos_ * (gripper_current_state_.load() - kGripperMinPos) / kGripperRange;
 
@@ -234,8 +234,7 @@ hardware_interface::return_type RobotiqGripperHardwareInterface::read(const rclc
   return hardware_interface::return_type::OK;
 }
 
-hardware_interface::return_type RobotiqGripperHardwareInterface::write(const rclcpp::Time& /*time*/,
-                                                                       const rclcpp::Duration& /*period*/)
+hardware_interface::return_type RobotiqGripperHardwareInterface::write()
 {
   double gripper_pos = (gripper_position_command_ / gripper_closed_pos_) * kGripperRange + kGripperMinPos;
   gripper_pos = std::max(std::min(gripper_pos, 255.0), 0.0);
