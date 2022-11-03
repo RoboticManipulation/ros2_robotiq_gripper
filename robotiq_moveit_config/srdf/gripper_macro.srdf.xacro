@@ -28,6 +28,14 @@
     <group_state name="${prefix}half_open" group="${prefix}gripper">
       <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.4" />
     </group_state>
+
+    <group_state name="${prefix}open_5cm" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.35" />
+    </group_state>
+
+    <group_state name="${prefix}push_5cm" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.5" />
+    </group_state>
     
 
     <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_left_knuckle_link" reason="Adjacent" />
