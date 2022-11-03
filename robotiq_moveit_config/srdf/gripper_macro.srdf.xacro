@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robotiq_gripper">
+  <xacro:macro name="gripper_srdf" params="prefix">
+
+    <group name="${prefix}gripper">
+      <chain base_link="${prefix}robotiq_85_base_link" tip_link="${prefix}robotiq_85_left_knuckle_link" />
+      <chain base_link="${prefix}robotiq_85_base_link" tip_link="${prefix}robotiq_85_right_finger_tip_link" />
+      <chain base_link="${prefix}robotiq_85_base_link" tip_link="${prefix}robotiq_85_left_finger_tip_link" />
+      <link name="${prefix}robotiq_85_base_link"/>
+      <link name="${prefix}robotiq_85_left_knuckle_link"/>
+      <link name="${prefix}robotiq_85_right_knuckle_link"/>
+      <joint name="${prefix}robotiq_85_left_knuckle_joint"/>
+      <joint name="${prefix}robotiq_85_right_knuckle_joint"/>
+    </group>
+
+    <group_state name="${prefix}open" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.0" />
+    </group_state>
+    
+    <group_state name="${prefix}close" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.8" />
+    </group_state>
+    
+
+    <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_left_knuckle_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_right_knuckle_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_left_inner_knuckle_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_right_inner_knuckle_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_left_knuckle_link" link2="${prefix}robotiq_85_left_inner_knuckle_link" reason="Never" />
+    <disable_collisions link1="${prefix}robotiq_85_left_knuckle_link" link2="${prefix}robotiq_85_left_finger_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_left_knuckle_link" link2="${prefix}robotiq_85_left_finger_tip_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_right_knuckle_link" link2="${prefix}robotiq_85_right_inner_knuckle_link" reason="Never" />
+    <disable_collisions link1="${prefix}robotiq_85_right_knuckle_link" link2="${prefix}robotiq_85_right_finger_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_right_knuckle_link" link2="${prefix}robotiq_85_right_finger_tip_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_left_inner_knuckle_link" link2="${prefix}robotiq_85_right_inner_knuckle_link" reason="Never" />
+    <disable_collisions link1="${prefix}robotiq_85_left_inner_knuckle_link" link2="${prefix}robotiq_85_left_finger_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_left_inner_knuckle_link" link2="${prefix}robotiq_85_left_finger_tip_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_right_inner_knuckle_link" link2="${prefix}robotiq_85_right_finger_link" reason="Adjacent" />
+    <disable_collisions link1="${prefix}robotiq_85_right_inner_knuckle_link" link2="${prefix}robotiq_85_right_finger_tip_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_left_finger_link" link2="${prefix}robotiq_85_left_finger_tip_link" reason="Adjacent" />
+
+    <disable_collisions link1="${prefix}robotiq_85_right_finger_link" link2="${prefix}robotiq_85_right_finger_tip_link" reason="Adjacent" />
+  
+  </xacro:macro>
+</robot>
