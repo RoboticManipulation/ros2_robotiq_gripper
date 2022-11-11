@@ -36,6 +36,47 @@
     <group_state name="${prefix}push_5cm" group="${prefix}gripper">
       <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.5" />
     </group_state>
+
+    <group_state name="${prefix}0" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.0" />
+    </group_state>
+    
+    <group_state name="${prefix}1" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.1" />
+    </group_state>
+
+    <group_state name="${prefix}2" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.2" />
+    </group_state>
+
+    <group_state name="${prefix}3" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.3" />
+    </group_state>
+
+    <group_state name="${prefix}4" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.4" />
+    </group_state>
+
+    <group_state name="${prefix}5" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.5" />
+    </group_state>
+
+    <group_state name="${prefix}6" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.6" />
+    </group_state>
+
+    <group_state name="${prefix}7" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.7" />
+    </group_state>
+
+    <group_state name="${prefix}75" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.75" />
+    </group_state>
+
+    <group_state name="${prefix}8" group="${prefix}gripper">
+      <joint name="${prefix}robotiq_85_left_knuckle_joint" value="0.8" />
+    </group_state>
+
     
 
     <disable_collisions link1="${prefix}robotiq_85_base_link" link2="${prefix}robotiq_85_left_knuckle_link" reason="Adjacent" />

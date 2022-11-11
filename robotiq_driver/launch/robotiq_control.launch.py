@@ -112,13 +112,13 @@ def generate_launch_description():
         parameters=[robot_description_param],
     )
 
-#    rviz_node = launch_ros.actions.Node(
-#        package="rviz2",
-#        executable="rviz2",
-#        name="rviz2",
-#        output="log",
-#        arguments=["-d", LaunchConfiguration("rvizconfig")],
-#    )
+    rviz_node = launch_ros.actions.Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        output="log",
+        arguments=["-d", LaunchConfiguration("rvizconfig")],
+    )
 
     joint_state_broadcaster_spawner = launch_ros.actions.Node(
         package="controller_manager",
