@@ -32,7 +32,6 @@
 #include <string>
 #include <vector>
 
-#include "hardware_interface/actuator_interface.hpp"
 #include "hardware_interface/handle.hpp"
 #include "hardware_interface/hardware_info.hpp"
 #include "hardware_interface/system_interface.hpp"
@@ -45,7 +44,7 @@
 
 namespace robotiq_driver
 {
-class RobotiqGripperHardwareInterface : public hardware_interface::ActuatorInterface
+class RobotiqGripperHardwareInterface : public hardware_interface::SystemInterface
 {
 public:
   RCLCPP_SHARED_PTR_DEFINITIONS(RobotiqGripperHardwareInterface)
@@ -86,7 +85,7 @@ private:
   std::string com_port_;
 
   std::thread command_interface_;
-  bool command_interface_is_running_;
+  std::atomic<bool> command_interface_is_running_;
   std::atomic<uint8_t> write_command_;
   std::atomic<uint8_t> gripper_current_state_;
 
