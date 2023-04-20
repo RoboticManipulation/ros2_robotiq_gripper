@@ -5,7 +5,7 @@
         prefix
         parent
         *origin
-        sim_ignition:=false
+        sim_gz:=false
         sim_isaac:=false
         use_fake_hardware:=false
         fake_sensor_commands:=false
@@ -16,7 +16,7 @@
         <!-- ros2 control instance -->
         <xacro:robotiq_gripper_ros2_control
             name="${name}" prefix="${prefix}"
-            sim_ignition="${sim_ignition}"
+            sim_gz="${sim_gz}"
             sim_isaac="${sim_isaac}"
             use_fake_hardware="${use_fake_hardware}"
             fake_sensor_commands="${fake_sensor_commands}"
