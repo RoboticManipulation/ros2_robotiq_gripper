@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robotiq_gripper">
+
+  <xacro:arg name="prefix" default="" />
+
+  <xacro:include filename="$(find robotiq_moveit_config)/srdf/gripper_macro.srdf.xacro"/>
+
+  <xacro:gripper_srdf prefix="$(arg prefix)"/>
+</robot>

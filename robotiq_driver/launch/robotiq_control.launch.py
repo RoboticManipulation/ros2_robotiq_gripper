@@ -148,7 +148,7 @@ def generate_launch_description():
         joint_state_broadcaster_spawner,
         robotiq_gripper_controller_spawner,
         robotiq_activation_controller_spawner,
-        rviz_node,
+#        rviz_node,
     ]
 
     return launch.LaunchDescription(args + nodes)
