@@ -160,7 +160,7 @@ std::vector<hardware_interface::CommandInterface> RobotiqGripperHardwareInterfac
 }
 
 
-::CallbackReturn RobotiqGripperHardwareInterface::on_activate(const rclcpp_lifecycle::State& /*previous_state*/)
+hardware_interface::CallbackReturn RobotiqGripperHardwareInterface::on_activate(const rclcpp_lifecycle::State& /*previous_state*/)
 {
   // set some default values for joints
   if (std::isnan(gripper_position_))
