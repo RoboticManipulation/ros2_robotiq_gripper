@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="robotiq_gripper">
     <xacro:macro name="robotiq_gripper" params="
-        name:=
+        name
         prefix
         parent
         *origin
