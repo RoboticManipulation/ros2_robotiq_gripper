@@ -34,8 +34,8 @@
 #include <thread>
 #include <chrono>
 
-constexpr int kBaudRate = 115200;
-constexpr auto kTimeoutMilliseconds = 1000;
+constexpr int kBaudRate = 115200; //9600; //115200
+constexpr auto kTimeoutMilliseconds = 10000;
 
 constexpr uint8_t kReadFunctionCode = 0x03;
 constexpr uint16_t kFirstOutputRegister = 0x07D0;

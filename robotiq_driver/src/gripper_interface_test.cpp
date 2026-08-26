@@ -41,7 +41,7 @@ int main()
     RobotiqGripperInterface gripper(kComPort, kSlaveID);
 
     std::cout << "Deactivating gripper...\n";
-    gripper.deactivateGripper();
+    //gripper.deactivateGripper();
 
     std::cout << "Activating gripper...\n";
     gripper.activateGripper();
